@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FLYNOBORDERS.SelfB2B.Entities.HotelPicture>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HDesc)
+        </td>
+        <td>
+            <img src="@Url.Content(item.Image)" width="300" height="130" class="img-rounded" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HID })
+        </td>
+    </tr>
+}
+
+</table>

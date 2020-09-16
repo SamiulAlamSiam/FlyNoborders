@@ -1,0 +1,12 @@
+C:\Users\User\Desktop\PROGRAMMINGLANGUAGE\ATP_2\FLYNOBORDERS.SelfB2B\FLYNOBORDERS.SelfB2B.Framework\bin\Debug\FLYNOBORDERS.SelfB2B.Framework.dll
+C:\Users\User\Desktop\PROGRAMMINGLANGUAGE\ATP_2\FLYNOBORDERS.SelfB2B\FLYNOBORDERS.SelfB2B.Framework\bin\Debug\FLYNOBORDERS.SelfB2B.Framework.pdb
+C:\Users\User\Desktop\PROGRAMMINGLANGUAGE\ATP_2\FLYNOBORDERS.SelfB2B\FLYNOBORDERS.SelfB2B.Framework\obj\Debug\FLYNOBORDERS.SelfB2B.Framework.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\PROGRAMMINGLANGUAGE\ATP_2\FLYNOBORDERS.SelfB2B\FLYNOBORDERS.SelfB2B.Framework\obj\Debug\FLYNOBORDERS.SelfB2B.Framework.dll
+C:\Users\User\Desktop\PROGRAMMINGLANGUAGE\ATP_2\FLYNOBORDERS.SelfB2B\FLYNOBORDERS.SelfB2B.Framework\obj\Debug\FLYNOBORDERS.SelfB2B.Framework.pdb
+C:\Users\kamrul islam\Desktop\Intern\FLYNOBORDERS.SelfB2B\FLYNOBORDERS.SelfB2B.Framework\bin\Debug\FLYNOBORDERS.SelfB2B.Framework.dll
+C:\Users\kamrul islam\Desktop\Intern\FLYNOBORDERS.SelfB2B\FLYNOBORDERS.SelfB2B.Framework\bin\Debug\FLYNOBORDERS.SelfB2B.Framework.pdb
+C:\Users\kamrul islam\Desktop\Intern\FLYNOBORDERS.SelfB2B\FLYNOBORDERS.SelfB2B.Framework\obj\Debug\FLYNOBORDERS.SelfB2B.Framework.csprojAssemblyReference.cache
+C:\Users\kamrul islam\Desktop\Intern\FLYNOBORDERS.SelfB2B\FLYNOBORDERS.SelfB2B.Framework\obj\Debug\FLYNOBORDERS.SelfB2B.Framework.csproj.CoreCompileInputs.cache
+C:\Users\kamrul islam\Desktop\Intern\FLYNOBORDERS.SelfB2B\FLYNOBORDERS.SelfB2B.Framework\obj\Debug\FLYNOBORDERS.SelfB2B.Framework.dll
+C:\Users\kamrul islam\Desktop\Intern\FLYNOBORDERS.SelfB2B\FLYNOBORDERS.SelfB2B.Framework\obj\Debug\FLYNOBORDERS.SelfB2B.Framework.pdb
+C:\Users\User\Desktop\PROGRAMMINGLANGUAGE\ATP_2\FLYNOBORDERS.SelfB2B\FLYNOBORDERS.SelfB2B.Framework\obj\Debug\FLYNOBORDERS.SelfB2B.Framework.csproj.CoreCompileInputs.cache

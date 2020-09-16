@@ -1,0 +1,30 @@
+﻿@model FLYNOBORDERS.SelfB2B.Entities.PackagePicture
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_AgentLayout.cshtml";
+}
+
+<h2 align="center">PACKAGE DETAILS WITH COST</h2>
+
+<div class="body-content">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#profile" aria-controls="home" role="tab" data-toggle="tab">PROFILE</a></li>
+        <li role="presentation"><a href="#details" aria-controls="profile" role="tab" data-toggle="tab">DETAILS</a></li>
+        <li role="presentation"><a href="#cost" aria-controls="messages" role="tab" data-toggle="tab">COST</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="profile">PROFILE</div>
+        <div role="tabpanel" class="tab-pane" id="details">DETAILS</div>
+        <div role="tabpanel" class="tab-pane" id="cost">
+            TOTAL COST : @Model.Price
+            <br/>
+            <a href="@Url.Action("Book", "PackageDetails", new {pId = @Model.PID})" class="btn btn-primary">Book Now</a>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,184 @@
+﻿@using FLYNOBORDERS.SelfB2B.Framework.Constant
+@using FLYNOBORDERS.SelfB2B.Framework.Helper
+@model FLYNOBORDERS.SelfB2B.Model.RegistrationModel
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 align="center">Registration</h2>
+
+@using (Html.BeginForm("Registration"))
+{
+    <div class="row">
+        <div class="col-md-3"></div>
+
+        <div class="col-md-6 box-shadow">
+            
+            @if (ValidationHelper2.IsValidString(ViewBag.Error))
+            {
+                <div class="alert alert-dismissible alert-danger">
+                    @ViewBag.Error
+                </div>
+            }
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    1  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    COMPANY INFORMATION
+                </div>
+                <div class="panel-body" align="center">
+                    <div class="form-group">
+                        @Html.LabelFor(r => r.CName)
+                        @Html.TextBoxFor(r => r.CName, new { placeholder = "Company Name", @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.CName)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(r => r.TradeLicenseNo)
+                        @Html.TextBoxFor(r => r.TradeLicenseNo, new { placeholder = "Trade License No", @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.TradeLicenseNo)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(r => r.Website)
+                        @Html.TextBoxFor(r => r.Website, new { placeholder = "www.Example.Com", @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.Website)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(r => r.CEmail)
+                        @Html.TextBoxFor(r => r.CEmail, new { placeholder = "Business Email Address", @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.CEmail)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(r => r.PhnNumber)
+                        @Html.TextBoxFor(r => r.PhnNumber, new { placeholder = "Phone Number", @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.PhnNumber)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(r => r.Address)
+                        @Html.TextBoxFor(r => r.Address, new { placeholder = "Address", @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.Address)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(r => r.City)
+                        @Html.TextBoxFor(r => r.City, new { placeholder = "City", @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.City)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(r => r.Zip)
+                        @Html.TextBoxFor(r => r.Zip, new { placeholder = "Zip / Postal COde", @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.Zip)
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    2 &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    ACCOUNT INFORMATION
+                </div>
+                <div class="panel-body" align="center">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(r => r.FirstName)
+                                @Html.TextBoxFor(r => r.FirstName, new { placeholder = "First Name", @class = "form-control" })
+                                @Html.ValidationMessageFor(r => r.FirstName)
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(r => r.LastName)
+                                @Html.TextBoxFor(r => r.LastName, new { placeholder = "Last Name", @class = "form-control" })
+                                @Html.ValidationMessageFor(r => r.LastName)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(r => r.UEmail)
+                        @Html.TextBoxFor(r => r.UEmail, new { placeholder = "Enter Email Address", @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.UEmail)
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(r => r.Pass)
+                                @Html.PasswordFor(r => r.Pass, new { placeholder = "Enter a Password", @class = "form-control" })
+                                @Html.ValidationMessageFor(r => r.Pass)
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(r => r.CPass)
+                                @Html.PasswordFor(r => r.CPass, new { placeholder = "Confirm the Password", @class = "form-control" })
+                                @Html.ValidationMessageFor(r => r.CPass)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(r => r.TimeZone)
+                        @Html.DropDownListFor(p => p.TimeZone, new SelectList(EnumCollection.GetEnumList(typeof(EnumCollection.TimeZoneEnum)), "ID", "Name"), "Please Select Time Zone", new { @class = "form-control" })
+                        @*@Html.TextBoxFor(r => r.TimeZone, new { placeholder = "Time Zone", @class = "form-control" })*@
+                        @Html.ValidationMessageFor(r => r.TimeZone)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(r => r.PreferredRoe)
+                        @Html.DropDownListFor(p => p.PreferredRoe, new SelectList(EnumCollection.GetEnumList(typeof(EnumCollection.PreferredRoeEnum)), "ID", "Name"), "Please Select Preferred ROE", new { @class = "form-control" })
+                        @*@Html.TextBoxFor(r => r.PreferredRoe, new { placeholder = "Pre. ROE", @class = "form-control" })*@
+                        @Html.ValidationMessageFor(r => r.PreferredRoe)
+                    </div>
+
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">SUBMIT APPLICATION</button>
+            
+            <div class="row">
+                
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    
+                    <br/> <br/>
+                    Already have an account?
+
+                    <a href=@Url.Action("Login", "Account")>Login Now</a>
+                </div>
+                <div class="col-md-3"></div>
+                
+            </div>
+            
+
+        </div>
+
+        <div class="col-md-3"></div>
+    </div>
+}
+
+
+
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function() {
+            $('.menu').removeClass('active');
+            $('#SuMenu').addClass('active');
+        });
+    </script>
+}

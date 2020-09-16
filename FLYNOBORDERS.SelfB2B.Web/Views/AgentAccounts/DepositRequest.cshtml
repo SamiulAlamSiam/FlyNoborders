@@ -1,0 +1,97 @@
+﻿@using System.Web.UI.WebControls
+@using FLYNOBORDERS.SelfB2B.Framework.Constant
+@using FLYNOBORDERS.SelfB2B.Framework.Helper
+@model FLYNOBORDERS.SelfB2B.Model.DepositeModel
+@{
+    ViewBag.Title = "DepositRequest";
+    Layout = "~/Views/Shared/_AgentLayout.cshtml";
+}
+
+<h2 align="center">DEPOSITE REQUEST</h2>
+
+@using (Html.BeginForm("DepositRequest", "AgentAccounts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-3"></div>
+
+        <div class="col-md-6 box-shadow" align="center">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            
+            @if (ValidationHelper2.IsValidString(ViewBag.Error))
+            {
+                <div class="alert alert-danger">
+                    @ViewBag.Error
+                </div>                
+            }
+            
+            @if (ValidationHelper2.IsValidString(ViewBag.Success))
+            {
+                <div class="alert alert-success">
+                    @ViewBag.Success
+                </div>
+            }
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.DType)
+                @Html.TextBoxFor(p => p.DType, new { @class = "form-control" })
+                @Html.ValidationMessageFor(p => p.DType)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.ChequeNo)
+                @Html.TextBoxFor(p => p.ChequeNo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(p => p.ChequeNo)
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(p => p.RefNum)
+                @Html.TextBoxFor(p => p.RefNum, new { @class = "form-control" })
+                @Html.ValidationMessageFor(p => p.RefNum)
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(p => p.ChequeBank)
+                @Html.TextBoxFor(p => p.ChequeBank, new { @class = "form-control" })
+                @Html.ValidationMessageFor(p => p.ChequeBank)
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(p => p.Amount)
+                @Html.TextBoxFor(p => p.Amount, new { @class = "form-control" })
+                @Html.ValidationMessageFor(p => p.Amount)
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(p => p.Date)
+                @Html.TextBoxFor(p => p.Date, new { @class = "form-control" })
+                @Html.ValidationMessageFor(p => p.Date)
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(p => p.BankId)
+                @Html.DropDownListFor(p => p.BankId, new SelectList(EnumCollection.GetEnumList(typeof(EnumCollection.BankNameEnum)), "ID", "Name"), "Please Select Bank Name", new { @class = "form-control" })
+                @*@Html.TextBoxFor(p => p.BankId, new { @class = "form-control" })*@
+                @Html.ValidationMessageFor(p => p.BankId)
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(p => p.ReceiptImage, htmlAttributes: new { @class = "form-control" })
+                <div class="col-md-10">
+                    <input type="file" id="image1" name="image1" />
+                </div>
+            </div>
+            
+            <br/> <br/>
+            <div class="form-group">
+                <div class="col-md-offet-2 col-md-10">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}

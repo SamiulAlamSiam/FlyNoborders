@@ -1,0 +1,62 @@
+﻿@using FLYNOBORDERS.SelfB2B.Framework.Helper
+@model FLYNOBORDERS.SelfB2B.Framework.Object.Result<List<FLYNOBORDERS.SelfB2B.Entities.Deposite>>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<h2 align="center">PENDING AGENT'S DEPOSITE</h2>
+
+@if (ValidationHelper2.IsValidString(ViewBag.Error))
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+<table class="table table-bordered table-hover table-striped text-center">
+    <tr>
+        <th>Company Email</th>
+        <th>Cheque No</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Receipt's Image</th>
+        <th>Operation</th>
+    </tr>
+
+    @foreach (var pendingDeposite in Model.Data)
+    {
+        var base64 = Convert.ToBase64String(pendingDeposite.ReceiptImage);
+        var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+        
+        <tr>
+            <td>@pendingDeposite.UserInfo.CompanyInfo.CEmail</td>
+            <td>@pendingDeposite.ChequeNo</td>
+            <td>@pendingDeposite.Amount</td>
+            <td>@pendingDeposite.Date</td>
+            <td>
+                <img src='@imgsrc' alt="Receipt.jpg" width="500px" height="200px" class="btn" onclick="popup('@imgsrc', '@pendingDeposite.ChequeNo')" data-placement="bottom" title="NEPAL" />
+            </td>
+            <td>
+                <a href=@Url.Action("AcceptPendingAgentDeposite", "AgentInfo", new { pendingAgentId = @pendingDeposite.UID })>Accept</a> &nbsp; | &nbsp;
+                <a href="#">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+@section scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://w2ui.com/src/w2ui-1.4.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://w2ui.com/src/w2ui-1.4.2.min.css" />
+    
+    <script>
+        function popup(img, chequeNo) {
+            //alert(img);
+            var image = $(this).attr(img);  // If We Use Image Path Then Use That Function
+            w2popup.open({ title: 'Cheque NO : ' + chequeNo, body: '<div class="w2ui-centered" width="100%" height="100%" ><img src="' + img + '"></img></div>' });
+        }
+    </script>
+}

@@ -1,0 +1,43 @@
+﻿@using FLYNOBORDERS.SelfB2B.Framework.Helper
+@model FLYNOBORDERS.SelfB2B.Framework.Object.Result<List<FLYNOBORDERS.SelfB2B.Entities.UserInfo>>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<h2>PENDING AGENT</h2>
+
+@if (ValidationHelper2.IsValidString(ViewBag.Error))
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+        <th>Company Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Company's Address</th>
+        <th>Company's Website</th>
+        <th>Operation</th>
+    </tr>
+
+    @foreach (var pendingAgent in Model.Data)
+    {
+        <tr>
+            <td>@pendingAgent.CompanyInfo.CName</td>
+            <td>@pendingAgent.UEmail</td>
+            <td>@pendingAgent.CompanyInfo.PhnNumber</td>
+            <td>@pendingAgent.CompanyInfo.Address</td>
+            <td>@pendingAgent.CompanyInfo.Website</td>
+            <td>
+                <a href=@Url.Action("AcceptPendingAgent", "Admin", new { pendingAgentId = @pendingAgent.UID })>Accept</a> &nbsp; | &nbsp;
+                <a href="#">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+

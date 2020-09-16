@@ -1,0 +1,46 @@
+﻿@model FLYNOBORDERS.SelfB2B.Web.Framework.ViewModel.PackageHotelPictureVM
+@{
+    ViewBag.Title = "Check";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Check</h2>
+
+<div class="row">
+    @foreach (var item in Model.PackagePictures)
+    {
+        <div class="col-md-3">
+            <div class="row text-center">
+                <div class="col-sm-4" style="width: 380px" height="245px">
+                    <div class="thumbnail">
+                        <img src="@Url.Content(item.Image)" alt="Package" width="400" height="300" class="img-rounded" data-placement="bottom" title="NEPAL" />
+                        <p><strong>NEPAL</strong></p>
+                        <p>
+                            BDT 10,500
+                            <a class="btn btn-primary" href=@Url.Action("Nepal", "PackageDetails")>View More</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row">
+    @foreach (var item in Model.HotelPictures)
+    {
+        <div class="col-md-3">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <img src="@Url.Content(item.Image)" alt="Package" width="350" height="245" class="img-rounded" data-placement="bottom" title="NEPAL" />
+                    </div>
+                    <div class="flip-box-back">
+                        <h2>@item.HName</h2>
+                        <p>@item.HDesc</p>
+                    </div>
+                </div>
+            </div>
+       </div>
+    }
+</div>

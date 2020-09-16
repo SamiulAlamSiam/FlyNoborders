@@ -1,0 +1,25 @@
+﻿@model FLYNOBORDERS.SelfB2B.Entities.PackagePicture
+@{
+    ViewBag.Title = "BookNow";
+    Layout = "~/Views/Shared/_AgentLayout.cshtml";
+}
+
+<h2 align="center">BOOK NOW</h2>
+@using (Html.BeginForm("BookNow"))
+{
+    <div class="row">
+        <div class="col-md-3"></div>
+
+        <div class="col-md-6 box-shadow">
+            COST : @Model.Price
+            @Html.HiddenFor(p=>p.Price)
+            <br/>
+            <button type="submit" class="btn btn-primary">PURCHASES</button>
+        </div>
+
+        <div class="col-md-3"></div>
+    </div>
+
+}
+
+

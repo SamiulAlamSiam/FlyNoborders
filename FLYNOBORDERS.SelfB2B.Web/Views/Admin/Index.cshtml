@@ -1,0 +1,150 @@
+﻿@using FLYNOBORDERS.SelfB2B.Framework.Helper
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    
+    @if (ValidationHelper2.IsValidString(ViewBag.Error))
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    }
+    <div class="col-md-3">
+        
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            COMMON
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <a class="list-group-item" href="#navbar">
+                            <span class="glyphicon glyphicon-th"></span> &nbsp; DASHBOARD
+                        </a>
+                        <a class="list-group-item" href="#navbar">
+                            <span class="glyphicon glyphicon-eye-open"></span> &nbsp; DEPARTMENT
+                        </a>
+                        <a class="list-group-item" href="#navbar">
+                            <span class="glyphicon glyphicon-book"></span> &nbsp; NEWS
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            FLY NOBORDERS
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        <a class="list-group-item" href="#navbar" onclick="AddTab('PACKAGES', '@Url.Action("List", "AgentInfo")')">
+                            <span class="glyphicon glyphicon-user"></span> &nbsp; AGENT INFO
+                        </a>
+                        <a class="list-group-item" href="#navbar" onclick="AddTab('PACKAGES', '@Url.Action("PendingDeposite", "AgentInfo")')">
+                            <span class="glyphicon glyphicon-usd"></span> &nbsp; PENDING DEPOSITE
+                        </a>
+                        <a class="list-group-item" href="#navbar" onclick="AddTab('PACKAGES', '@Url.Action("Create", "Package")')">
+                            <span class="glyphicon glyphicon-arrow-right"></span> &nbsp; LIST PACKAGES
+                        </a>
+                        <a class="list-group-item" href="#navbar" onclick="AddTab('HOTEL', '@Url.Action("Create", "Hotel")')">
+                            <span class="glyphicon glyphicon-home"></span> &nbsp; LIST HOTEL
+                        </a>
+                        <a class="list-group-item" href="#navbar">
+                            <span class="glyphicon glyphicon-earphone"></span> &nbsp; PHONE NUMBER
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            USER MANAGER
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        <a class="list-group-item" href="#navbar" onclick="AddTab('PendingUser', '@Url.Action("PendingUser", "Account")')">
+                            <span class="glyphicon glyphicon-pencil"></span> &nbsp; PENDING USER
+                        </a>
+                        <a class="list-group-item" href="#navbar" onclick="AddTab('UserInfo', '@Url.Action("ListUserInfo", "Account")')">
+                            <span class="glyphicon glyphicon-user"></span> &nbsp; USER INFO
+                        </a>
+                        <a class="list-group-item" href="#navbar" onclick="AddTab('UserBooking', '@Url.Action("List", "UserBooking")')">
+                            <span class="glyphicon glyphicon-ok"></span> &nbsp; USER BOOKING
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-9" style="min-height: 500px; border-left: 1px solid gray">
+        
+        <div>
+
+            <!-- Nav tabs -->
+            <ul id="sideMenu" class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active" id="li1"><a href="#div1" aria-controls="home" role="tab" data-toggle="tab">Dashboard</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content" id="mainTab">
+                <div role="tabpanel" class="tab-pane active" id="div1">
+                    Dashboard
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+
+        var i = 2;
+        function AddTab(tabName, link) {
+            var height = $(document).height - 80;
+            $('#sideMenu').append('<li role="presentation" id="li' + i + '"><a href="#div' + i + '" aria-controls="home" role="tab" data-toggle="tab">' + tabName + ' &nbsp; &nbsp; <span style="cursor: pointer" class="glyphicon glyphicon-remove" onclick="RemoveTab('+i+')"></span></a></li>');
+            $('#mainTab').append('<div role="tabpanel" class="tab-pane" id="div' + i + '"><iframe src="'+link+'" width="100%" height="500"></iframe></div>');
+            $('#sideMenu a:last').tab('show') // Select last tab
+            i++;
+        }
+
+        function RemoveTab(index) {
+
+            if ($('#li' + index).hasClass('active')) {
+                var prevLi = $('#li' + index).prev();
+                var prevDiv = $('#div' + index).prev();
+
+                prevLi.addClass('active');
+                prevDiv.addClass('active');
+            }
+
+
+            $('#li' + index).remove();
+            $('#div' + index).remove();
+        }
+    </script>
+}

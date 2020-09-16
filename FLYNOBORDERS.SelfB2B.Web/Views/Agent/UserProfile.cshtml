@@ -1,0 +1,216 @@
+﻿@using FLYNOBORDERS.SelfB2B.Framework.Constant
+@using FLYNOBORDERS.SelfB2B.Framework.Helper
+@model FLYNOBORDERS.SelfB2B.Framework.Object.Result<FLYNOBORDERS.SelfB2B.Entities.UserInfo>
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_AgentLayout.cshtml";
+}
+
+<h2 align="center">MY PROFILE</h2>
+
+@using (Html.BeginForm("UserProfile"))
+{
+    <div class="row">
+        
+        <div class="col-md-1"></div>
+
+        <div class="col-md-9">
+            @if (ValidationHelper2.IsValidString(@ViewBag.Error))
+            {
+                <div class="alert alert-danger">
+                    @ViewBag.Error
+                </div>
+            }
+            
+            <div class="panel box-shadow">
+                <div class="panel-heading" style="width: 100%; border-bottom: 1px solid gray">
+                    <span class="glyphicon glyphicon-user"></span> &nbsp; COMPANY INFORMATION
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group" align="center">
+                                @Html.LabelFor(e => e.Data.CompanyInfo.CName)
+                                @Html.TextBoxFor(e => e.Data.CompanyInfo.CName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(e => e.Data.CompanyInfo.CName)
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group" align="center">
+                                @Html.LabelFor(e => e.Data.CompanyInfo.CEmail)
+                                @Html.TextBoxFor(e => e.Data.CompanyInfo.CEmail, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(e => e.Data.CompanyInfo.CEmail)
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group" align="center">
+                                @Html.LabelFor(e => e.Data.CompanyInfo.Website)
+                                @Html.TextBoxFor(e => e.Data.CompanyInfo.Website, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(e => e.Data.CompanyInfo.Website)
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group" align="center">
+                                @Html.LabelFor(e => e.Data.CompanyInfo.PhnNumber)
+                                @Html.TextBoxFor(e => e.Data.CompanyInfo.PhnNumber, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(e => e.Data.CompanyInfo.PhnNumber)
+                                @Html.HiddenFor(e => e.Data.CompanyInfo.TradeLicenseNo)
+                                @Html.HiddenFor(e => e.Data.CompanyInfo.Address)
+                                @Html.HiddenFor(e => e.Data.CompanyInfo.City)
+                                @Html.HiddenFor(e => e.Data.CompanyInfo.Zip)
+                                @Html.HiddenFor(e => e.Data.Balance)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label style="text-align: center; font-size: 100%">Address:</label>
+                        </div>
+                        <div class="col-md-11">
+                            <label class="form-control"> @Model.Data.CompanyInfo.Address, @Model.Data.CompanyInfo.City, @Model.Data.CompanyInfo.Zip</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="panel box-shadow">      
+                <div class="panel-heading" style="width: 100%; border-bottom: 1px solid gray">
+                    <span class="glyphicon glyphicon-user"></span> &nbsp; USER PROFILE
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group" align="center">
+                                @Html.LabelFor(e => e.Data.FirstName)
+                                @Html.TextBoxFor(e => e.Data.FirstName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(e => e.Data.FirstName)
+                                @Html.HiddenFor(e=>e.Data.UID)
+                                @Html.HiddenFor(e=>e.Data.CompanyInfo.CID)
+                                @Html.HiddenFor(e=>e.Data.CompanyID)
+                                @Html.HiddenFor(e=>e.Data.AdminVerifyID)
+                                @Html.HiddenFor(e=>e.Data.UserTypeID)
+                                @Html.HiddenFor(e=>e.Data.TimeZone)
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group" align="center">
+                                @Html.LabelFor(e => e.Data.LastName)
+                                @Html.TextBoxFor(e => e.Data.LastName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(e => e.Data.LastName)
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group" align="center">
+                                @Html.LabelFor(e => e.Data.UEmail)
+                                @Html.TextBoxFor(e => e.Data.UEmail, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(e => e.Data.UEmail)
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group" align="center">
+                                @Html.LabelFor(e => e.Data.PreferredRoe)
+                                @Html.DropDownListFor(p => p.Data.PreferredRoe, new SelectList(EnumCollection.GetEnumList(typeof(EnumCollection.PreferredRoeEnum)), "ID", "Name"), "Please Select Preferred ROE", new { @class = "form-control" })
+                                @*@Html.TextBoxFor(e => e.Data.PreferredRoe, new { @class = "form-control" })*@
+                                @Html.ValidationMessageFor(e => e.Data.PreferredRoe)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel box-shadow">
+                <div class="panel-heading" style="width: 100%; border-bottom: 1px solid gray">
+                    <span class="glyphicon glyphicon-log-in"></span> &nbsp; CHANGE PASSWORD
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group" align="center">
+                                @Html.LabelFor(e => e.Data.UEmail)
+                                @Html.TextBoxFor(e => e.Data.UEmail, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(e => e.Data.UEmail)
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <a href="" class="btn btn-info">CHANGE PASSWORD</a>
+                            @*<div class="form-group" align="center">
+                                @Html.LabelFor(e => e.Data.Pass)
+                                <input type="password" value=@Model.Data.Pass name="Pass" class="form-control" />
+                                @Html.ValidationMessageFor(e => e.Data.Pass)
+                            </div>*@
+                        </div>
+                        
+                        @*<div class="col-md-4">
+                            <div class="form-group" align="center">
+                                @Html.LabelFor(e => e.Data.Pass)
+                                <input type="password" value=@Model.Data.Pass name="CPass" class="form-control" />
+                                @Html.ValidationMessageFor(e => e.Data.Pass)
+                            </div>
+                        </div>*@
+
+                    </div>
+                </div>
+
+            </div>
+
+            
+        </div>
+
+        <div class="col-md-2">
+            <div class="box-shadow">
+                <div align="center" style="width: 100%; border-bottom: 1px solid gray">
+                    <label>@Model.Data.LastName, @Model.Data.FirstName</label>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label style="font-size: 85%">ROLE: </label>
+                    </div>
+
+                    <div class="col-md-6">
+                        @if (Model.Data.UserTypeID == (int)EnumCollection.UserTypeEnum.Admin)
+                        {
+                            <label style="font-size: 85%">ADMIN</label>
+                        }
+
+                        @if (Model.Data.UserTypeID == (int)EnumCollection.UserTypeEnum.Agent)
+                        {
+                            <label style="font-size: 85%">AGENT</label>
+                        }
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label style="font-size: 85%">STATUS: </label>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label style="font-size: 85%">ACTIVE</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary form-control">UPDATE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
